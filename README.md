@@ -7,3 +7,5 @@
 [Веб-сервер на реальном примере. Docker-compose, nginx, mysql, php-fpm, wordpress.](https://www.youtube.com/watch?v=mKdwkV5p1xg)
 
 [КАК НАСТРОИТЬ NGINX НА ОБРАБОТКУ PHP файлов? NGINX и PHP FPM](https://www.youtube.com/watch?v=NCExdGJ_SZU)
+
+test
