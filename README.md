@@ -8,4 +8,4 @@
 
 [КАК НАСТРОИТЬ NGINX НА ОБРАБОТКУ PHP файлов? NGINX и PHP FPM](https://www.youtube.com/watch?v=NCExdGJ_SZU)
 
-test
+[Nginx by Scale Your Code](https://www.youtube.com/playlist?list=PLXM5y5j_b0mPAjog6pOUAqrGbKLaXR0bD)
