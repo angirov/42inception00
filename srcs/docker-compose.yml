@@ -1,0 +1,16 @@
+services:
+  nginx:
+    container_name: ${PROJECT_NAME}_nginx
+    build:
+      context: requirements/nginx
+      args:
+        CA_NAME: ${CA_NAME}
+        SERVER_NAME: ${SERVER_NAME}
+        DOM_NAME: ${DOM_NAME:-localhost}
+        NGINX_PASS_LINE: ${NGINX_PASS_LINE:-admin:admin}
+        TOOL_DIR: ${TOOL_DIR:-/tools}
+        WORK_DIR: ${WORK_DIR:-.}
+    # this will set the name for the image
+    image: nginx-debian-bullsyeye
+    ports:
+      - 443:443

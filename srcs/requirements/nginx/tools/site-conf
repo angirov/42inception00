@@ -1,0 +1,25 @@
+server {
+      listen 443 ssl default_server;
+      # listen [::]:80;
+
+      server_name {{ DOM_NAME }};
+      ssl_certificate /etc/ssl/certs/server.pem;
+      ssl_certificate_key /etc/ssl/private/server.key;
+      ssl_client_certificate /etc/ssl/certs/inception-ca.pem;
+
+      root /var/www/{{ DOM_NAME }};
+      index index.html;
+
+      location / {
+
+            try_files $uri $uri/ =404;
+
+            location /admin {
+                  auth_basic "Please authenticate ...";
+                  auth_basic_user_file /etc/nginx/passwords;
+
+                  index admin.html;
+            }
+
+      }
+}
