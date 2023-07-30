@@ -23,7 +23,11 @@ certs:
 	openssl x509 -in ${CA_NAME}.pem -inform PEM -out $${CA_NAME}.crt
 
 curl:
-	curl --cacert ${CERT_DIR}/${CA_NAME}.pem  https://${DOM_NAME}/
+	@(echo -n "Trying  tls 1.0: " && curl --tls-max 1.0 --cacert ${CERT_DIR}/${CA_NAME}.pem  https://${DOM_NAME}/ 2> /dev/null) || echo "FAILED"
+	@(echo -n "Trying  tls 1.1: " && curl --tls-max 1.1 --cacert ${CERT_DIR}/${CA_NAME}.pem  https://${DOM_NAME}/ 2> /dev/null) || echo "FAILED"
+	@(echo -n "Trying  tls 1.2: " && curl --tls-max 1.2 --cacert ${CERT_DIR}/${CA_NAME}.pem  https://${DOM_NAME}/ 2> /dev/null) || echo "FAILED"
+	@(echo -n "Trying  tls 1.3: " && curl --tls-max 1.3 --cacert ${CERT_DIR}/${CA_NAME}.pem  https://${DOM_NAME}/ 2> /dev/null) || echo "FAILED"
+
 clean:
 	rm inception-nginx.crt
 

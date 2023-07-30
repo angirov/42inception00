@@ -25,6 +25,7 @@ RUN mv /etc/nginx/sites-available/site-conf /etc/nginx/sites-available/${DOM_NAM
     && ln -s /etc/nginx/sites-available/${DOM_NAME} /etc/nginx/sites-enabled/${DOM_NAME} \
     && rm /etc/nginx/sites-enabled/default && rm /etc/nginx/sites-available/default \
     && sed "s/{{ DOM_NAME }}/${DOM_NAME}/g" /var/www/${DOM_NAME}/index.html.template > /var/www/${DOM_NAME}/index.html \
+    && sed -i -e "s/TLSv1 //" -e "s/TLSv1.1 //" /etc/nginx/nginx.conf \
     && rm /var/www/${DOM_NAME}/index.html.template \
     && sed -i "s/{{ DOM_NAME }}/${DOM_NAME}/g" /etc/nginx/sites-available/${DOM_NAME} \
     && echo "${NGINX_PASS_LINE}" > /etc/nginx/passwords
